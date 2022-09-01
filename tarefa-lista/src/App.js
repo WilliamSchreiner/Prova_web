@@ -3,44 +3,37 @@ import './App.css';
 
 
 function App() {
+  const [tarefa, setTarefa] = useState();
+  const [tarefas, setTarefas] = useState([]);
 
-const [tarefa, setTarefa] = useState();
-const [tarefas, setTarefas] = useState([]);
-const [id, setId] = useState();
-const [index, setIndex] = useState();
-const [texto, setTexto] = useState();
 
-function salvar(){
+  function adicionar() {
+    console.log('adicionar ')
+    tarefas.push(tarefa);
+    setTarefas([...tarefas]);
 
-  if (id) {
-    index = tarefas.findIndex(i => i.id == id);
-    tarefas[index].texto = texto;
-}
-else{
-    tarefa = {
-        id: Math.random().toString(36).substring(2), 
-        texto: texto,
-    };
-
-  tarefas.push(tarefa);
-  setTarefas([...tarefas])
-  window.localStorage.setItem('tarefas', JSON.stringify(tarefas));
-  
-}
-
-tarefa = document.querySelector("#input-tarefa").value = null;
-}
+    console.log('tarefas ', tarefas)
+  }
 
   return (
     <div className="container">
-    <h1>Lista de Tarefas</h1> <br/>
-    <form>
-      <div className="mb-3">
-        <input type="text" id='input-tarefa' className="form-control" onChange={(event) => setTarefa(event.target.value)} />
-      </div>
+      <h1>Aluno - Notas</h1>
+      <form>
+        <div className="mb-3">
+          <label className="form-label">sua tarefa</label>
+          <input type="text" className="form-control" onChange={(event) => setTarefas(event.target.value)} />
+        </div>
 
-      <button type="button" onClick={salvar}>salvar</button>
-    </form>
+        <button type="button" onClick={adicionar}>Adicionar</button>
+      </form>
+
+      <ul>
+        {
+          tarefas.map((n, index) => {
+            return <li key={index}>{n}</li>
+          })
+        }
+      </ul>
     </div>
   )
 }
