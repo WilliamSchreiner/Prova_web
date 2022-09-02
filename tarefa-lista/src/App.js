@@ -1,78 +1,94 @@
-import logo from './logo.svg';
+
 import './App.css';
-//envio de forma para nao dar erro nas variaveis
-import React, { useState, useRef} from "react";
-//O useRef nos permite persistir valores entre renderizações, 
-//ele pode ser usado para armazenar o valor de uma variável mutável
+import {useState} from 'react';
 
 function App() {
+  const [id, setId] = useState(0);
+  const [tarefa, setTarefa] = useState('');
+  const [descr, setDescr] = useState('');
+  const [lista, setLista] = useState([]);
+  const [listaFeita, setListaFeita] = useState([]);
 
-  // States definidos.
-  const [tarefa, setTarefa] = useState();
-  const [historico, setHistorico] = useState([]);
-  const [listaTarefas, setListaTarefas] = useState([]);
+  //functions
+  function salvarTarefa(){
+    if (id){
+      const index = lista.findIndex( n => n.id === id);
+      lista[index].tarefa = tarefa;
+      lista[index].descr = descr;
 
-  // REf ID definido.
-  const idTarefa = useRef(0);
+      setLista([...lista]);
+    } else {
+      let tarefas = {
+        id: Math.random().toString(36),
+        tarefa: tarefa,
+        descr: descr,
+      };
 
-  //Functions
-  function salvar(){
-    setListaTarefas(old => {return [...old, {id: idTarefa.current, texto: tarefa} ]})
-    idTarefa.current++;
-    setTarefa(' ')
+      lista.push(tarefas);
+      setLista([...lista]);
+    }
+    setId('');
+    setTarefa('');
+    setDescr('');
   }
-  function limparHistorico(){
-    setHistorico( [ ] )
-    idTarefa = 0;
-  }
-  function concluir(id){
-    // Terminar
+  function concluirTarefa(id){
+    let index = lista.findIndex(f => f.id === id);
+    listaFeita.push(lista[index])
+    lista.splice(index, 1);
 
-  
+      setListaFeita([...listaFeita]);
+    setId('');
+    setTarefa('');
+    setDescr('');
   }
   function deleteTarefa(id){
-  const tmp = listaTarefas.filter(tarefa => tarefa.id !== id );
-  // o TMP recebera todas as tarefas cujo ID seja diferente da que ele recebeu.
-  setListaTarefas(tmp);
+    const index = lista.find(n => n.id === id);
+      lista.splice(index, 1);
+      setLista([...lista]);
   }
   function editarTarefa(id){
-    //Terminar
+    const tarefas = lista.find(n => n.id === id);
+      setId(tarefas.id);
+      setTarefa(tarefas.tarefa);
+      setDescr(tarefas.descr);
+  }
+  function limparHistorico() {
+    setListaFeita( [ ] );
   }
 
-return (
-<>
-  <h3> listas de tarefas</h3>
 
-  <form>
-    <div id="form">
-    <input  type="text" value={tarefa} onChange={(evento) => {setTarefa(evento.target.value) }}></input>
-    <br/>
-    <button type="button" className="botao" onClick={salvar}>Salvar</button>
-    <button type="button" className="botao" onClick={limparHistorico}>Limpar Historico</button>
+  return (
+    <>
+    <h2>Lista de tarefas</h2>
+    <div>
+      <form>
+        <input type="text" value={tarefa} placeholder="Escreva a sua tarefa" onChange={(event) => setTarefa(event.target.value)}></input><br/>
+        <input type="text" value={descr} placeholder="Escreva a sua descrição" onChange={(event) => setDescr(event.target.value)}></input><br/>
+        <button type="button" onClick={salvarTarefa}>salvar</button>
+        <button type="button" onClick={limparHistorico}>limpar historico</button>
+      </form>
     </div>
-  </form>
 
-  <div className="lista-tarefas">  
-  <label>Suas tarefas:</label>
-  {listaTarefas.map((tarefa) => {
-    return  <p key={tarefa.id} className="p-tarefa">
-      {tarefa.texto} 
-      <input type="checkbox" onClick={() => concluir(tarefa.id)}></input>
-      <button id="botao-delete" onClick={() => deleteTarefa(tarefa.id)}>delete</button>
-      <button id="botao-editar" onClick={() => editarTarefa(tarefa.id)}>editar</button>
+    <div id="lista-tarefas">
+    {lista.map((tarefas) => {
+    return  <p key={tarefas.id} className="p-tarefa">
+      <p id="p-title">{tarefas.tarefa + ':'}</p> {tarefas.descr}
+      <input type="checkbox"  onClick={() => concluirTarefa(tarefas.id)}></input>
+      <button  className="material-icons" id='delete-button' onClick={() => deleteTarefa(tarefas.id)}>delete</button>
+      <button  className="material-icons" id='editar-button' onClick={() => editarTarefa(tarefas.id)}>edit</button>
     </p> 
   })}
-  </div>
+    </div>
 
-  <div className="lista-tarefas">  
-  <label>Suas tarefas concluidas:</label>
-  {historico.map((tarefa) => {
-    return  <p key={tarefa.id} id="tarefa-feita" className="p-tarefa">
-      {tarefa.texto}</p> 
-  })}
-  </div> 
-</>
-);
+    <div id="listas-tarefasFeitas">
+    {listaFeita.map((tarefas) => {
+    return  <p key={tarefas.id} className="p-tarefaFeitas">
+      <p id="p-title">{tarefas.tarefa + ':'}</p> 
+      {tarefas.descr} 
+      </p> })}
+    </div>
+    </>
+  );
 }
 
 export default App;
