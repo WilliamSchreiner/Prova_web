@@ -22,12 +22,35 @@ h2{
 }
 /* footer*/
 footer{
-  margin-top: 100px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color:rgb(141, 197, 247);
-  border-top: solid 2px rgb(138, 201, 255);
-  box-shadow: 0px 0px 4px 3px rgb(5, 123, 226);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 232px;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  max-height:7px;
+  max-width: 3000px;
+  width: 1415px;
+  color: aliceblue;
+  background-color:#1d1d1d;
+  border-top: solid 2px rgb(255, 255, 255);
+  box-shadow: 0px 0px 4px 3px rgb(0, 0, 0);
+  margin-left: -105px;
+
+}
+
+footer p {
+  margin-top: 13px;
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+h4 {
+  margin-left: 70px;
+  font-size: 20px;
+  margin-top: 18px
 }
 
 /* botoes de Salvar */
