@@ -11,6 +11,7 @@ function App() {
     const [nota3, setNota3] = useState('');
     const [lista, setLista] = useState([]);
 
+
     function adicionar() {
 
       if (id){
@@ -58,7 +59,6 @@ function App() {
       setLista([...lista]);
     }
     
-
   return (
     <div className="container">
      <h1>Notas dos Alunos</h1>
@@ -104,7 +104,7 @@ function App() {
                   <td>{n.nota1}</td>
                   <td>{n.nota2}</td>
                   <td>{n.nota3}</td>
-                  <td>{n.media}</td>
+                  <td className={n.media >= 7 ? '' : 'color-table'}>{n.media}</td>
                   <td>
                     <button className="botaoEditar" onClick={() => editar(n.id)}>Editar</button>
                   </td>
@@ -127,6 +127,6 @@ function App() {
     </div>  
 
   );
-}
 
+        }
 export default App;
