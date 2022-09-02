@@ -35,6 +35,7 @@ function App() {
         nota.media = ((nota.nota1 + nota.nota2 + nota.nota3)/3).toFixed(2);
         lista.push(nota);
         setLista([...lista]);
+
       }
       setId('');
       setNome('');
@@ -56,39 +57,39 @@ function App() {
       lista.splice(index, 1);
       setLista([...lista]);
     }
-
+    
 
   return (
     <div className="container">
      <h1>Notas dos Alunos</h1>
      <form className="row">
-        <div className="col-md-12 mb-3">
-          <label className="form-label">Nome</label>
+        <div className="  mb-3">
+          <label className="form-label">Nome do Aluno</label>
           <input type="text" className="form-control" value={nome} onChange={(event) => setNome(event.target.value)} />
         </div>
         <div className="mb-3 col-md-4">
-          <label className="form-label">Nota 1</label>
+          <label className="form-label">1ª Nota</label>
           <input type="text" className="form-control" value={nota1} onChange={(event) => setNota1(event.target.value)} />
         </div>
         <div className="mb-3  col-md-4">
-          <label className="form-label">Nota 2</label>
+          <label className="form-label">2ª Nota</label>
           <input type="text" className="form-control" value={nota2}  onChange={(event) => setNota2(event.target.value)} />
         </div>
         <div className="mb-3  col-md-4">
-          <label className="form-label">Nota 3</label>
+          <label className="form-label">3ª Nota</label>
           <input type="text" className="form-control" value={nota3}  onChange={(event) => setNota3(event.target.value)} />
         </div>
         <div className='col-md-12'>
-          <button type="button" className="btn btn-primary " onClick={adicionar}>Adicionar</button>
+          <button type="button" className="botaoAdicionar" onClick={adicionar}>Adicionar</button>
         </div>
       </form>
       <table className="table">
         <thead>
           <tr>
             <th>Aluno</th>
-            <th>Nota 1</th>
-            <th>Nota 2</th>
-            <th>Nota 3</th>
+            <th>1ª Nota</th>
+            <th>2ª Nota</th>
+            <th>3ª Nota</th>
             <th>Média</th>
             <th></th>
             <th></th>
@@ -105,10 +106,10 @@ function App() {
                   <td>{n.nota3}</td>
                   <td>{n.media}</td>
                   <td>
-                    <button className="btn btn-primary" onClick={() => editar(n.id)}>[editar]</button>
+                    <button className="botaoEditar" onClick={() => editar(n.id)}>Editar</button>
                   </td>
                   <td>
-                    <button className="btn btn-danger" onClick={() => excluir(n.id)}>[excluir]</button>
+                    <button className="botaoExcluir" onClick={() => excluir(n.id)}>Excluir</button>
                   </td>
                 </tr>
               )
@@ -116,7 +117,14 @@ function App() {
           }
         </tbody>
       </table>
-    </div>
+    <footer>
+      <h4>Integrantes:</h4>
+      <p> 1° Amilto;</p>
+      <p> 2° João Pedro;</p>
+      <p> 3° Lucas Edu. Faleiro;</p>
+      <p> 4° William.</p>
+    </footer>
+    </div>  
 
   );
 }

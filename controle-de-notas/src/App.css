@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+body {
+  background: rgb(47,255,47);
+  background: linear-gradient(165deg, rgba(47,255,47,1) 8%, rgba(0,255,214,1) 100%);
+  height: 630px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.botaoEditar {
+  background-color: rgb(0, 255, 128);
+  border-radius: 8px;
+  border: 2px solid #1d1d1d; /* black */;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 1px 7px;
+  font-weight: bolder;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.botaoExcluir {
+  background-color: rgb(250, 66, 66);
+  border-radius: 8px;
+  border: 2px solid #090f09; /* black */;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-weight: bolder;
+  padding: 1px 5px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.botaoAdicionar {
+  background-color: #EBC327;
+  border-radius: 15px;
+  border: 2px solid #1d1d1d; /* black */;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  color: #1d1d1d;
+  font-weight: bold;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;  
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  transition: background,color .1s ease-in-out;  
+  transition: all 0.3s ease 0s;
+}
+
+.botaoAdicionar:active {
+  transform: translateY(-1px);
+}
+
+.botaoAdicionar:hover {
+  background-color: #fff;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
+.col-md-12 {
+  margin-top: 25px;
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-top: 232px;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  max-height:7px;
+  max-width: 3000px;
+  width: 1324px;
+  color: aliceblue;
+  background-color:#1d1d1d;
+  border-top: solid 2px rgb(255, 255, 255);
+  box-shadow: 0px 0px 4px 3px rgb(0, 0, 0);
+  margin-left: -105px;
 }
 
-.App-link {
-  color: #61dafb;
+footer p {
+  margin-top: 13px;
+  margin-left: 5px;
+  font-size: 17px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color-table {
+  color: red;
 }
