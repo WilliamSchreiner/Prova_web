@@ -91,6 +91,14 @@ function App() {
       <p className="p-tarefaFeitas">{tarefas.descr}</p> 
       </p> })}
     </div>
+
+    <footer>
+      <h4>Integrantes:</h4>
+      <p> 1° Amilto;</p>
+      <p> 2° João Pedro;</p>
+      <p> 3° Lucas Edu. Faleiro;</p>
+      <p> 4° William.</p>
+    </footer>
     </>
   );
 }

@@ -20,6 +20,15 @@ h2{
   border-right: solid 1px black;
   border-radius: 8px;
 }
+/* footer*/
+footer{
+  margin-top: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color:rgb(141, 197, 247);
+  border-top: solid 2px rgb(138, 201, 255);
+  box-shadow: 0px 0px 4px 3px rgb(5, 123, 226);
+}
 
 /* botoes de Salvar */
 #botaoSalvar{
